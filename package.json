@@ -1,0 +1,19 @@
+{
+  "name": "favorites-product-card",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagoretondar/FavoritesProductCard.git"
+  },
+  "author": "Thiago Retondar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thiagoretondar/FavoritesProductCard/issues"
+  },
+  "homepage": "https://github.com/thiagoretondar/FavoritesProductCard#readme"
+}
