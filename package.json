@@ -6,7 +6,8 @@
   "scripts": {
     "start": "./node_modules/npm-run-all/bin/npm-run-all/index.js --parallel server:dev webpack:dev",
     "server:dev": "DEBUG=express* ./node_modules/nodemon/bin/nodemon.js --inspect --ext js,jsx --ignore public/ --ignore server/client.js server/server.js --exec ./node_modules/babel-cli/bin/babel-node.js --presets es2015",
-    "webpack:dev": "node ./node_modules/webpack/bin/webpack -w"
+    "webpack:dev": "node ./node_modules/webpack/bin/webpack -w",
+    "test": "babel-node node_modules/.bin/babel-istanbul cover _mocha -- $(find * -name '*.spec.js' -o -name '*.spec.jsx' -not -path 'public/*' -not -path 'dist/*') --recursive"
   },
   "repository": {
     "type": "git",
@@ -22,16 +23,22 @@
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.1",
+    "babel-istanbul": "^0.12.2",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.8.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "jsdom": "^9.12.0",
+    "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
+    "react-addons-test-utils": "^15.4.2",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   },
