@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+    "start": "./node_modules/npm-run-all/bin/npm-run-all/index.js --parallel server:dev webpack:dev",
+    "server:dev": "DEBUG=express* ./node_modules/nodemon/bin/nodemon.js --inspect --ext js,jsx --ignore public/ --ignore server/client.js server/server.js --exec ./node_modules/babel-cli/bin/babel-node.js --presets es2015",
+    "webpack:dev": "node ./node_modules/webpack/bin/webpack -w"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/thiagoretondar/FavoritesProductCard#readme",
   "devDependencies": {
+    "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.1",
@@ -27,10 +30,14 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   }
