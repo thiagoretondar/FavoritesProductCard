@@ -9,6 +9,7 @@
     "rules": {
         "indent": ["warn", 4],
         "react/jsx-indent": ["warn", 4],
+        "react/jsx-indent-props": ["warn", 4],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     },
     "extends": "airbnb"

@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import FavoriteProductCard from './components/favoriteProductCard';
+
 ReactDOM.render(
-    <h1>Favorites Cards</h1>,
+    <FavoriteProductCard />,
     document.querySelector('#container'),
 );
