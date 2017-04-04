@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import userMock from '../../../mocks/favoriteProductCard/user123';
+import { connect } from 'react-redux';
 
+import userMock from '../../../mocks/favoriteProductCard/user123';
 import FavoriteProduct from './favoriteProduct';
 
 class FavoriteProductCard extends Component {
@@ -20,4 +21,4 @@ class FavoriteProductCard extends Component {
     }
 }
 
-export default FavoriteProductCard;
+export default connect()(FavoriteProductCard);
