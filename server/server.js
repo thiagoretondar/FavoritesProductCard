@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import user123Mock from '../mocks/favorites/user123';
+import user123Mock from '../mocks/favoriteProductCard/user123';
 
 const PORT = 8081;
 

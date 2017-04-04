@@ -5,6 +5,14 @@ const propTypes = {
     reviewer: React.PropTypes.object.isRequired,
 };
 
+function renderInfoInstallments(installmentObject) {
+    return (
+        <span className="productInfoInstallments">
+            {installmentObject.quantity}x {installmentObject.value}
+        </span>
+    );
+}
+
 const FavoriteProduct = ({ product, reviewer }) =>
     <div className="mainProduct">
         <section className="productPreview">
@@ -24,9 +32,7 @@ const FavoriteProduct = ({ product, reviewer }) =>
             <div className="productInfoBestPrice">
                 <h4>Melhor Preço</h4>
                 <a href={product.bestPrice.store.link}>
-                    <span className="productInfoInstallments">
-                        {product.bestPrice.installment.quantity}x {product.bestPrice.installment.value}
-                    </span>
+                    { product.bestPrice.installment ? renderInfoInstallments(product.bestPrice.installment) : '' }
                     <span className="productInfoMinorPrice">
                         R$ {product.bestPrice.value}
                     </span>

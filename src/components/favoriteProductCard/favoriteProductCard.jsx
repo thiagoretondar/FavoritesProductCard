@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import userMock from '../../mocks/favorites/user123';
+import userMock from '../../../mocks/favoriteProductCard/user123';
 
 import FavoriteProduct from './favoriteProduct';
 
