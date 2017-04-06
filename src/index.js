@@ -9,8 +9,8 @@ import FavoriteProductCard from './components/favoriteProductCard/favoriteProduc
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
-    <Provider >
-        <FavoriteProductCard store={createStoreWithMiddleware(reducers)} />
+    <Provider store={createStoreWithMiddleware(reducers)}>
+        <FavoriteProductCard />
     </Provider>,
     document.querySelector('#container'),
 );
