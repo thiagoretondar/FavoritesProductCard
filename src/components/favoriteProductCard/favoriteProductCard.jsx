@@ -1,24 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchFavoriteProducts } from '../../actions';
 
-import userMock from '../../../mocks/favoriteProductCard/user123';
 import FavoriteProduct from './favoriteProduct';
 
 class FavoriteProductCard extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = userMock;
+    componentWillMount() {
+        this.props.fetchFavoriteProducts('main');
     }
 
     render() {
-        const { product, reviewer } = this.state;
-        return (
-            <div id="favoriteProductCard">
-                <FavoriteProduct product={product} reviewer={reviewer} />
-            </div>
-        );
+        const { product, reviewer } = this.props.favoriteProduct;
+
+        if (product && reviewer) {
+            return (
+                <div id="favoriteProductCard">
+                    <button onClick={() => this.props.fetchFavoriteProducts()}>Next</button>
+                    <FavoriteProduct product={product} reviewer={reviewer} />
+                </div>
+            );
+        }
+
+        return (<div>Loading...</div>);
     }
 }
 
-export default connect()(FavoriteProductCard);
+function mapStateToProps({ favoriteProduct }) {
+    console.log('Mapping state to props', favoriteProduct);
+    return { favoriteProduct };
+}
+
+function mapDispatchToProps(dispatch) {
+    console.log('Binding action to props');
+    return bindActionCreators({ fetchFavoriteProducts }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteProductCard);

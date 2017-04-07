@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
+import favoriteProductRedcer from './favoriteProductReducer';
+
 const rootReducer = combineReducers({
-    state: (state = {}) => state,
+    favoriteProduct: favoriteProductRedcer,
 });
 
 export default rootReducer;
