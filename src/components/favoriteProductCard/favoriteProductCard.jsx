@@ -5,12 +5,18 @@ import { fetchFavoriteProducts } from '../../actions';
 
 import FavoriteProduct from './favoriteProduct';
 
+const propTypes = {
+    fetchFavoriteProducts: React.PropTypes.func.isRequired,
+    favoriteProduct: React.PropTypes.object.isRequired,
+};
+
 class FavoriteProductCard extends Component {
     componentWillMount() {
         this.props.fetchFavoriteProducts('main');
     }
 
     render() {
+        console.log('Rendering <FavoriteProductCard />');
         const { product, reviewer } = this.props.favoriteProduct;
 
         if (product && reviewer) {
@@ -25,10 +31,11 @@ class FavoriteProductCard extends Component {
         return (<div>Loading...</div>);
     }
 }
+FavoriteProductCard.propTypes = propTypes;
 
-function mapStateToProps({ favoriteProduct }) {
-    console.log('Mapping state to props', favoriteProduct);
-    return { favoriteProduct };
+function mapStateToProps(state) {
+    console.log('Mapping state to props', state.favoriteProduct);
+    return { favoriteProduct: state.favoriteProduct };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -5,7 +5,7 @@ export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
     case FETCH_FAVORITE_PRODUCTS:
         console.log('Calling FETCH_FAVORITE_PRODUCTS in reducer', action.payload);
-        return action.payload;
+        return Object.assign({}, action.payload);
     default:
         console.log('Returning default state in reducer');
         return state;
