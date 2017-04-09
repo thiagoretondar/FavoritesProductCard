@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchFavoriteProducts } from '../../actions';
+import { fetchFavoriteProducts, fetchSimilarProducts } from '../../actions';
 
 import FavoriteProduct from './favoriteProduct';
+import SimilarProducts from './similarProducts';
 
 const propTypes = {
     fetchFavoriteProducts: React.PropTypes.func.isRequired,
+    fetchSimilarProducts: React.PropTypes.func.isRequired,
     favoriteProduct: React.PropTypes.object.isRequired,
+    similarProducts: React.PropTypes.array.isRequired,
 };
 
 class FavoriteProductCard extends Component {
     componentWillMount() {
         this.props.fetchFavoriteProducts('main');
+        this.props.fetchSimilarProducts(123);
     }
 
     render() {
-        console.log('Rendering <FavoriteProductCard />');
         const { product, reviewer } = this.props.favoriteProduct;
 
         if (product && reviewer) {
+            const { similarProducts } = this.props;
             return (
                 <div id="favoriteProductCard">
-                    <button onClick={() => this.props.fetchFavoriteProducts()}>Next</button>
                     <FavoriteProduct product={product} reviewer={reviewer} />
+                    <SimilarProducts products={similarProducts} />
                 </div>
             );
         }
@@ -34,13 +38,11 @@ class FavoriteProductCard extends Component {
 FavoriteProductCard.propTypes = propTypes;
 
 function mapStateToProps(state) {
-    console.log('Mapping state to props', state.favoriteProduct);
-    return { favoriteProduct: state.favoriteProduct };
+    return { favoriteProduct: state.favoriteProduct, similarProducts: state.similarProducts };
 }
 
 function mapDispatchToProps(dispatch) {
-    console.log('Binding action to props');
-    return bindActionCreators({ fetchFavoriteProducts }, dispatch);
+    return bindActionCreators({ fetchFavoriteProducts, fetchSimilarProducts }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteProductCard);
