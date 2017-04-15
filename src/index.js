@@ -9,8 +9,10 @@ import FavoriteProductCard from './components/favoriteProductCard/favoriteProduc
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
+const preloadedState = window.__PRELOADED_STATE__;
+
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)}>
+    <Provider store={createStoreWithMiddleware(reducers, preloadedState)}>
         <FavoriteProductCard />
     </Provider>,
     document.querySelector('#container'),

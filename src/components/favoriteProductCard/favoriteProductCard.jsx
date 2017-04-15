@@ -12,10 +12,6 @@ const propTypes = {
 };
 
 class FavoriteProductCard extends Component {
-    componentWillMount() {
-        this.props.fetchFavoriteProducts('main');
-    }
-
     render() {
         const { product, reviewer } = this.props.favoriteProduct;
 

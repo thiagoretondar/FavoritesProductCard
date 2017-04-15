@@ -1,7 +1,13 @@
 export function sliceTextTo40Chars(text) {
-    return text.slice(0, 40);
+    if (text) {
+        return text.slice(0, 40);
+    }
+    return text;
 }
 
 export function sliceTextTo50Chars(text) {
-    return text.slice(0, 50);
+    if (text) {
+        return text.slice(0, 50);
+    }
+    return text;
 }
