@@ -20,25 +20,6 @@ app.use(express.static('public'));
 app.set('views', 'public/views');
 app.use(bodyParser.json());
 
-const renderFullPage = (html, preloadedState) => `<!doctype html>
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/twbs/bootstrap/48938155eb24b4ccdde09426066869504c6dab3c/dist/css/bootstrap.min.css">
-    <title>Favorite Product Card</title>
-</head>
-<body>
-    <div id="container">${html}</div>
-    <script>
-    // WARNING: See the following for security issues around embedding JSON in HTML:
-    // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-    window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
-    </script>
-    <script src="/js/main.bundle.js"></script>
-</body>
-</html>
-`;
-
 app.get('/', (req, res) => {
     console.log('getting index page');
     const store = createStore(reducers);
@@ -50,7 +31,7 @@ app.get('/', (req, res) => {
 
     const preloadedState = store.getState();
 
-    return res.send(renderFullPage(html, preloadedState));
+    return res.render('index', { html, preloadedState });
 });
 
 app.get('/favorites/user/:userId', (req, res) => {
