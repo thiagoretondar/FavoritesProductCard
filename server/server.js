@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
             <FavoriteProductCard />
         </Provider>);
 
-    const preloadedState = store.getState();
+    const preloadedState = JSON.stringify(store.getState());
 
     return res.render('index', { html, preloadedState });
 });
