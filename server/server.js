@@ -1,7 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxPromise from 'redux-promise';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import reducers from '../src/reducers';
@@ -22,7 +23,10 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     console.log('getting index page');
-    const store = createStore(reducers);
+
+    const favoriteResponse = user123Mock;
+
+    const store = createStore(reducers, { favoriteProduct: favoriteResponse }, applyMiddleware(ReduxPromise));
 
     const html = renderToString(
         <Provider store={store}>
