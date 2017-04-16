@@ -1,41 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchFavoriteProducts, fetchSimilarProducts } from '../../actions';
 
 import FavoriteProduct from './favoriteProduct';
 import SimilarProducts from './similarProducts';
 
 const propTypes = {
-    fetchFavoriteProducts: React.PropTypes.func.isRequired,
     favoriteProduct: React.PropTypes.object.isRequired,
 };
 
-class FavoriteProductCard extends Component {
-    render() {
-        const { product, reviewer } = this.props.favoriteProduct;
+const FavoriteProductCard = ({ favoriteProduct }) => {
+    const { product, reviewer } = favoriteProduct;
 
-        if (product && reviewer) {
-            return (
-                <div id="favoriteProductCard">
-                    <FavoriteProduct product={product} reviewer={reviewer} />
-                    <SimilarProducts productId={product.id} />
-                </div>
-            );
-        }
-
-        return (<div>Loading...</div>);
-    }
-}
-
+    return (
+        <div id="favoriteProductCard">
+            <FavoriteProduct product={product} reviewer={reviewer} />
+            <SimilarProducts productId={product.id} />
+        </div>
+    );
+};
 FavoriteProductCard.propTypes = propTypes;
 
 function mapStateToProps(state) {
-    return { favoriteProduct: state.favoriteProduct, similarProducts: state.similarProducts };
+    return { favoriteProduct: state.favoriteProduct };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchFavoriteProducts, fetchSimilarProducts }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FavoriteProductCard);
+export default connect(mapStateToProps)(FavoriteProductCard);
