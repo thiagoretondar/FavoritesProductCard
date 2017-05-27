@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import FavoriteProduct from './favoriteProduct';
 import SimilarProducts from './similarProducts';
 
+import './style.css';
+
 const propTypes = {
     favoriteProduct: React.PropTypes.object.isRequired,
 };
