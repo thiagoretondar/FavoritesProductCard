@@ -1,5 +1,3 @@
-@Library('jenkins-mosby') _
-
 node {
     try {
         stage('Checkout') {
