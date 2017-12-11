@@ -13,7 +13,6 @@ export function fetchFavoriteProducts() {
 
 export function fetchSimilarProducts(productId) {
     const request = axios.get(`/favorites/similars/products/${productId}`);
-
     return {
         type: FETCH_SIMILAR_PRODUCTS,
         payload: request,
