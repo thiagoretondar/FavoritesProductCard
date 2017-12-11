@@ -8,6 +8,7 @@ node {
         }
 
         stage('Testing groovy helper') {
+            echo "Calling helper"
             someGroovyHelper 'Thiago'
         }
     } catch (err) {
