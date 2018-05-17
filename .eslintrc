@@ -8,7 +8,7 @@
     ],
     "rules": {
         "indent": ["warn", 4],
-        "max-len": ["warn", 250],
+        "max-len": ["warn", 350],
         "no-unused-expressions":["off", { "extensions": [".js", ".jsx"] }],
         "react/jsx-indent": ["warn", 4],
         "react/jsx-indent-props": ["warn", 4],
